@@ -1,0 +1,2 @@
+#add consonants seperated with a , (this line is ignored)
+q,w,r,t,y,p,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m

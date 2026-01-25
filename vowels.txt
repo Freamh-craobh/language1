@@ -1,0 +1,3 @@
+#add vowels seperated with a , (this line is ignored)
+a,e,i,o,u
+á,é,í,ú,ó
