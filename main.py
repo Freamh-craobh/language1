@@ -4,7 +4,7 @@ import random, function, io
 #print(values)
 
 #set up consonant and vowel lists
-test = True
+test = False
 consonants = []
 vowels = []
 
@@ -29,10 +29,10 @@ with open("input.txt","r") as f:
             if i < 1:
                 input = line
     else: 
-        input = f.read()
+        input = f.read().replace("-","")
 
-
-wordlist = input.strip().split(sep=" ")
+#print(input.replace("\n",""))
+wordlist = input.replace("\n","").strip().split(sep=" ")
 
 output = []
 
