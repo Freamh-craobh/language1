@@ -77,12 +77,8 @@ for word in wordlist:
 
 
 for key, positions in violations.items():
-    print(key, positions)
+    #print(key, positions)
     replaced = key
     for pos in sorted(positions, reverse=True):
-        replaced = replaced[:pos+1] + "a" + replaced[pos+1:]
-    print(key, replaced)
-
-function.vowel_selection() #TESTING
-
-print(function.weights({1:"a", 2:"b", 3:"c"})) #TESTING WEIGHTS
+        replaced = replaced[:pos+1] + function.random_vowel() + replaced[pos+1:]
+    print(f"{key:<15} ->\t {replaced:<20}")

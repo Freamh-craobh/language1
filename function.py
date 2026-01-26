@@ -16,7 +16,17 @@ def random_call(min, max):
     rand_seed += 1
     return random.randrange(min, max)
 
-def weights(vowel_rates):
+def vowel_selection():
+    vowel_rates = {}
+    with open("vowels.txt", "r") as f:
+        for i,line in enumerate(f.readlines()):
+         if i > 0:
+            vowel_rates[i] = line.strip()
+        return vowel_rates
+
+vowel_init = vowel_selection()
+
+def weights(vowel_rates=vowel_init):
     total = 0
     limits = []
     for i in vowel_rates:
@@ -24,19 +34,18 @@ def weights(vowel_rates):
         total += int((1/i)*100)
     
     rand_limit = random_call(0, total)
-    print(limits, rand_limit)
+    #print(limits, rand_limit)
     for i in range(len(limits)):
-        if rand_limit < limits[i-1]:
-            return i # THIS SHOULD BE DONE
+        if rand_limit < limits[i]:
+            return i+1 # THIS SHOULD BE DONE
    
+def random_vowel():
+    v_options = vowel_init[weights()].split(",")
+    num_vowels = len(v_options)
+    vowel_selection = random_call(0, num_vowels+1)
+    return v_options[vowel_selection-1]
 
-def vowel_selection():
-    vowel_rates = {}
-    with open("vowels.txt", "r") as f:
-        for i,line in enumerate(f.readlines()):
-         if i > 0:
-            vowel_rates[i] = line
-        print(vowel_rates) #NEED TO FINISH THIS AFTER WEIGHTS FUNC IS DONE
+
     
 
 def dict_lister(self, addition, list_item):
