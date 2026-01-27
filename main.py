@@ -11,7 +11,7 @@ vowels = []
 with open("consonants.txt", "r") as f:
     for i,line in enumerate(f.readlines()):
         if i > 0:
-            consonants = [i for i in line if i != ","]
+            consonants += [i for i in line if i != ","]
         
 with open("vowels.txt", "r") as f:
     for i,line in enumerate(f.readlines()):
@@ -27,12 +27,14 @@ with open("input.txt","r") as f:
     if test:
         for i,line in enumerate(f.readlines()):
             if i < 1:
-                input = line
+                raw_input = line
     else: 
-        input = f.read().replace("-","")
+        raw_input = f.read().replace("-","")
 
 #print(input.replace("\n",""))
-wordlist = input.replace("\n","").strip().split(sep=" ")
+wordlist_unclean = raw_input.replace("\n","").strip().split(sep=" ")
+
+wordlist = list(dict.fromkeys(wordlist_unclean))
 
 output = []
 
