@@ -84,3 +84,8 @@ for key, positions in violations.items():
     for pos in sorted(positions, reverse=True):
         replaced = replaced[:pos+1] + function.random_vowel() + replaced[pos+1:]
     print(f"{key:<15} ->\t {replaced:<20}")
+    output.append(replaced)
+
+print(output)
+with open("output.txt", "w") as f:
+    f.writelines(line + "\n" for line in output)
